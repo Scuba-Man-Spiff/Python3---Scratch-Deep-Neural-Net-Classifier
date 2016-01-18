@@ -48,7 +48,7 @@ with open('mnist.pkl', 'rb') as f:
 # mnistdata[2]) is validate
     
 trainfeet = pd.DataFrame(mnistdata[0][0])
-trainlabl = pd.DaaFrame(mnistdata[0][1])
+trainlabl = pd.DataFrame(mnistdata[0][1])
 
 mnistdata = None
 ###############################################################################
