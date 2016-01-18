@@ -47,14 +47,14 @@ with open('mnist.pkl', 'rb') as f:
 # mnistdata[1]) is test
 # mnistdata[2]) is validate
     
-trainfeat = pd.DataFrame(mnistdata[0][0])
-trainlabl = pd.DataFrame(mnistdata[0][1])
+trainfeet = pd.DataFrame(mnistdata[0][0])
+trainlabl = pd.DaaFrame(mnistdata[0][1])
 
 mnistdata = None
 ###############################################################################
 # Check max and min
-# 
-# np.amax(trainfeat, axis=0)
+# np.amax(trainfeet, axis=0)
+# np.amax(trainfeet, axis=0)
 ###############################################################################
 
 ####
@@ -67,7 +67,7 @@ mnistdata = None
 
 # Size of the dataset.
 #
-N_datapoints = trainfeat.shape[0]
+N_datapoints = trainfeet.shape[0]
 
 ###############################################################################
 # Settings
