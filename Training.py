@@ -30,7 +30,7 @@ import math
 # Blobal Vars (Like Global Vars, but fatter)
 ###############################################################################
 
-wkdir = 'C:/Users/bsmith22/Documents/GitHub/Python_Deep_Neural-Network'
+wkdir = 'D:/UserFiles/GitHub/Python3---Scratch-Deep-Neural-Net-Classifier'
 
 ###############################################################################
 # Dataset
@@ -45,13 +45,17 @@ with open('mnist.pkl', 'rb') as f:
     
 # mnistdata[0]) is train
 # mnistdata[1]) is test
-# mnistdata[1]) is validate
-
-trainfeat = mnistdata[0][0]
-trainlabl = mnistdata[0][1]
+# mnistdata[2]) is validate
+    
+trainfeat = pd.DataFrame(mnistdata[0][0])
+trainlabl = pd.DataFrame(mnistdata[0][1])
 
 mnistdata = None
-np.amax(trainfeat, axis=0)
+###############################################################################
+# Check max and min
+# 
+# np.amax(trainfeat, axis=0)
+###############################################################################
 
 ####
 # Commented out from Julia code - might need to use
@@ -113,8 +117,8 @@ momentum = 0.75
 # Generate mask for neuron dropout.
 #
 def removeable(n):
-    return [1.0 * (dropout <= x) for x in n]
-
+    return 1.0 * (dropout <= rand(n))
+remove(n) = 1.0*(dropout .<= rand(n))
 # Activation functions.
 #
 def sigmoid(n):
@@ -144,15 +148,15 @@ def dsoftmax(m):
 
 # Holds change in parameters from a minibatch.
 #
-db1  = zeros(N1)
-dW12 = zeros(N1, N2)
-db2  = zeros(N2)
-dW23 = zeros(N2, N3)
-db3  = zeros(N3)
-dW34 = zeros(N3, N4)
-db4  = zeros(N4)
-dW45 = zeros(N4, N5)
-db5  = zeros(N5)
+db1  = np.zeros(N1)
+dW12 = np.zeros((N1, N2))
+db2  = np.zeros(N2)
+dW23 = np.zeros((N2, N3))
+db3  = np.zeros(N3)
+dW34 = np.zeros((N3, N4))
+db4  = np.zeros(N4)
+dW45 = np.zeros((N4, N5))
+db5  = np.zeros(N5)
 
 # Track percentage of guesses that are correct.
 #
@@ -163,6 +167,9 @@ N_tries = 0.0
 #
 for i in range(1, N_updates):
 
+    # test
+    # i = 1
+
     # Generate masks for thinning out neural network (dropout procedure).
     #
     r2 = removeable(N2)
@@ -172,6 +179,9 @@ for i in range(1, N_updates):
     # Collect multiple updates for minibatch.
     #
     for j in range(1, N_minibatch):
+
+        # test
+        # j = 1
 
         # Randomly load item from the dataset (part of stochastic gradient descent).
         #
