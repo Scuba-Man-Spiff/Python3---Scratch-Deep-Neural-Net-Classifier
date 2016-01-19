@@ -78,15 +78,15 @@ N5 = 10
 
 # Load neural network parameters.
 #
-b1 = readcsv("bin/train_b1.csv")
-W12 = readcsv("bin/train_W12.csv")
-b2 = readcsv("bin/train_b2.csv")
-W23 = readcsv("bin/train_W23.csv")
-b3 = readcsv("bin/train_b3.csv")
-W34 = readcsv("bin/train_W34.csv")
-b4 = readcsv("bin/train_b4.csv")
-W45 = readcsv("bin/train_W45.csv")
-b5 = readcsv("bin/train_b5.csv")
+b1  = np.loadtext("bin/train_b1.csv")
+W12 = np.loadtext("bin/train_W12.csv")
+b2  = np.loadtext("bin/train_b2.csv")
+W23 = np.loadtext("bin/train_W23.csv")
+b3  = np.loadtext("bin/train_b3.csv")
+W34 = np.loadtext("bin/train_W34.csv")
+b4  = np.loadtext("bin/train_b4.csv")
+W45 = np.loadtext("bin/train_W45.csv")
+b5  = np.loadtext("bin/train_b5.csv")
 
 ##########################################################################################
 # Methods
@@ -94,17 +94,22 @@ b5 = readcsv("bin/train_b5.csv")
 
 # Activation functions.
 #
-sigmoid(x) = 1.0./(1.0+exp(-x))
-softplus(x) = log(1.0+exp(x))
-softmax(x) = exp(x)./sum(exp(x))
+def sigmoid(n):
+    return [1.0 / (1.0 + math.exp(-x)) for x in n]
 
+def softplus(n):
+    return [math.log(1.0 + math.exp(x)) for x in n]
+
+def softmax(n):
+    t = sum(math.exp(x))
+    return [math.exp(x) / t for x in n]
 ##########################################################################################
 # Test
 ##########################################################################################
 
 # Print header.
 #
-println("RESPONSES")
+print("RESPONSES")
 
 # Track percentage of guesses that are correct.
 #
@@ -138,7 +143,7 @@ for i = 1:N_datapoints
 
     # Print response.
     #
-    println("  i = $(i), Guess = $(guess), Answer = $(answer)")
+    print("  i = ",i," Guess = ",guess," Answer = ",answer)
 
 end
 
@@ -148,7 +153,7 @@ end
 
 # Print progress report.
 #
-println("SCORE")
-println("  Correct = $(round(100.0*N_correct/N_tries, 5))%")
-println("")
+print("SCORE")
+print("  Correct = ",round(100.0*N_correct/N_tries, 5),"%")
+print("")
 
