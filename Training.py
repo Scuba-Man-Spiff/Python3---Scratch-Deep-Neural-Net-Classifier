@@ -18,7 +18,6 @@ Data set found at: http://deeplearning.net/tutorial/gettingstarted.html
 
 import numpy as np
 import pandas as pd
-import scipy as sp
 import os
 import sys
 import re
@@ -32,6 +31,11 @@ import random
 ###############################################################################
 
 wkdir = 'D:/UserFiles/GitHub/Python3---Scratch-Deep-Neural-Net-Classifier'
+bindir = 'bin'
+
+def ensure_dir(f):
+    if not os.path.exists(bindir):
+        os.makedirs(f)
 
 ###############################################################################
 # Dataset
@@ -266,12 +270,11 @@ for i in range(1, N_updates):
 
         # Print progress report.
         #
-        println("REPORT")
-        println("  Batch = $(round(Int, i))")
-        println("  alpha = $(round(alpha, 8))")
-        println("  Correct = $(round(100.0*N_correct/N_tries, 8))%")
-        println("")
-        flush(STDOUT)
+        print("REPORT")
+        print("  Batch = ",(round(i)))
+        print("  alpha = ",round(alpha, 8))
+        print("  Correct = $(round(100.0*N_correct/N_tries, 8))%")
+        print"")
 
     # Reset percentage of guesses that are correct.
     #
@@ -291,16 +294,16 @@ W45 = W45 * (1.0 - dropout)
 
 # Create folder to hold parameters.
 #
-mkpath("bin")
+ensure_dir(bindir)
 
 # Save the parameters.
 #
-writecsv("bin/train_b1.csv", b1)
-writecsv("bin/train_W12.csv", W12)
-writecsv("bin/train_b2.csv", b2)
-writecsv("bin/train_W23.csv", W23)
-writecsv("bin/train_b3.csv", b3)
-writecsv("bin/train_W34.csv", W34)
-writecsv("bin/train_b4.csv", b4)
-writecsv("bin/train_W45.csv", W45)
-writecsv("bin/train_b5.csv", b5)
+np.savetxt("bin/train_b1.csv", b1, delimiter=",")
+np.savetxt("bin/train_W12.csv", W12, delimiter=",")
+np.savetxt("bin/train_b2.csv", b2, delimiter=",")
+np.savetxt("bin/train_W23.csv", W23, delimiter=",")
+np.savetxt("bin/train_b3.csv", b3, delimiter=",")
+np.savetxt("bin/train_W34.csv", W34, delimiter=",")
+np.savetxt("bin/train_b4.csv", b4, delimiter=",")
+np.savetxt("bin/train_W45.csv", W45, delimiter=",")
+np.savetxt("bin/train_b5.csv", b5, delimiter=",")
