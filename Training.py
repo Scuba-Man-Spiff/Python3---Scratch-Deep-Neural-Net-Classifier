@@ -25,6 +25,7 @@ import re
 import pickle
 import logging
 import math
+import random
 
 ###############################################################################
 # Blobal Vars (Like Global Vars, but fatter)
@@ -117,8 +118,8 @@ momentum = 0.75
 # Generate mask for neuron dropout.
 #
 def removeable(n):
-    return 1.0 * (dropout <= rand(n))
-remove(n) = 1.0*(dropout .<= rand(n))
+    return 1.0 * (dropout <= np.random.rand(n))
+    
 # Activation functions.
 #
 def sigmoid(n):
