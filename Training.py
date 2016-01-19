@@ -186,7 +186,7 @@ for i in range(1, N_updates):
 
         # Randomly load item from the dataset (part of stochastic gradient descent).
         #
-        k = rand(1:N_datapoints)
+        k = random.randrange(1,N_datapoints+1)
 
         x = 6.0*features[k,:]'-3.0
 
