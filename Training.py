@@ -251,9 +251,9 @@ for i in range(1, N_updates):
     # Reset the parameter changes from the minibatch (scale by momentum factor).
     #
     db1  = db1  * momentum
-    dW12 = bW12 * momentum
+    dW12 = dW12 * momentum
     db2  = db2  * momentum
-    dW23 = bW23 * momentum
+    dW23 = dW23 * momentum
     db3  = db3  * momentum
     dW34 = dW34 * momentum
     db4  = db4  * momentum
@@ -272,8 +272,8 @@ for i in range(1, N_updates):
         #
         print("REPORT")
         print("  Batch = ",(round(i)))
-        print("  alpha = ",round(alpha, 8))
-        print("  Correct = $(round(100.0*N_correct/N_tries, 8))%")
+        print("  alpha = ",round(alpha, 10))
+        print("  Correct = ",(round(100.0*N_correct/N_tries, 8)),"%")
         print"")
 
     # Reset percentage of guesses that are correct.
